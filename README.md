@@ -33,10 +33,8 @@ Insert(T val, int index) – inserts a new value at a given index, pushing the e
 
 | Criteria                                                                                                                                                                 | Ratings                        | Pts       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------: | :---------: |
-| This criterion is linked to a Learning OutcomeCreated the SingleLinkedList <br> SingleLinkedList is created with all required methods.                                   | 0-2                            | 2 pts     |
-| This criterion is linked to a Learning OutcomeCreate the DoubleLinkedList
-| DoubleLinkedList is created with all the required updates and methods.                        | 2 ptsFull Marks 0 ptsNo Marks | 2 pts<br> |
-| This criterion is linked to a Learning OutcomeLinkedLists incorporated generics
-| Make your linked lists utilize generics to support more data types                      | 2 ptsFull Marks 0 ptsNo Marks | 2 pts<br> |
-| This criterion is linked to a Learning OutcomeUnit Tests for both Lists
-| Create at least 2 tests for each method inside your LinkedList for each type (single & double). | 4 ptsFull Marks 0 ptsNo Marks | 4 pts<br> |
+| Created the SingleLinkedList <br> SingleLinkedList is created with all required methods.                                   | 0-2                            | 2 pts     |
+| Create the DoubleLinkedList <br> DoubleLinkedList is created with all required methods.                                   | 0-2                            | 2 pts     |
+| LinkedLists incorporated generics <br> Make your linked lists utilize generics to support more data types                      | 0-2 | 2 pts |
+| Unit Tests for both Lists <br> Create at least 2 tests for each method inside your LinkedList for each type (single & double). | 0-4 | 4 pts |
+|                                                                                                                                |     | Total Points: 10 |
