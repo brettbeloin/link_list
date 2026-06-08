@@ -1,6 +1,6 @@
-#include <iostream>
+#include "singleLinkedList.h"
 
 int main() {
-  std::cout << "Hello, World!" << std::endl;
+  singleLinkedList<int> list;
   return 0;
 }
