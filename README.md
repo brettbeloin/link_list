@@ -8,7 +8,7 @@ Your goal is to build two linked list data structures that meet the following re
 - Classes should be generic, capable of storing any kind of data within its nodes. See [Info] Generics In Code for help on generics.
 - Each list class should have the following functions/properties:
     - Add(T val) – puts a new value at the Tail end of the list
-Insert(T val, int index) – inserts a new value at a given index, pushing the existing value at that index to the next index spot, and so on. Insert may ONLY target indices that are currently in use. In other words, if you have 5 elements in your list, you may insert at any index between 0 and 4 inclusive. Index 5 would be considered out of bounds as it is not currently in use during the insertion process.
+    - Insert(T val, int index) – inserts a new value at a given index, pushing the existing value at that index to the next index spot, and so on. Insert may ONLY target indices that are currently in use. In other words, if you have 5 elements in your list, you may insert at any index between 0 and 4 inclusive. Index 5 would be considered out of bounds as it is not currently in use during the insertion process.
         - Any index less than zero or equal to or greater than count should throw an index out of bounds exception.
     - Count – returns the number of values in the list. This should be a property. In certain coding languages this is typically protected through getters/setters. For efficiency, the count value should be a managed value (stored and updated as needed) and not simply derived each time Count is called.
     - Get(int index) – returns the value at the given index.
