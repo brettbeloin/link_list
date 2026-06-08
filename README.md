@@ -1,6 +1,6 @@
 ### Requirements
 Your goal is to build two linked list data structures that meet the following requirements:
-![Singly Linked List](assest/images/LinkedList_Pic.webp)
+![Singly Linked List](assests/images/LinkedList_Pic.webp)
 
 ### Step 1:
 - Add a class: SingleLinkedList
@@ -28,3 +28,28 @@ Insert(T val, int index) – inserts a new value at a given index, pushing the e
 - Now that your SingleLinkedList is completed, create a DoubleLinkedList 
     - Make sure to make a copy of your SingleLinkedList (renaming it) before getting started.
 ![Double Linked List](assests/images/DoubleLinkedList_pic.webp)
+
+### Rubric:
+
+| Criteria                                                                                                                                                                 | Ratings                        | Pts       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ | --------- |
+| This criterion is linked to a Learning OutcomeCreated the SingleLinkedList
+
+SingleLinkedList is created with all required methods.                                       | 2 ptsFull Marks
+
+0 ptsNo Marks | 2 pts<br> |
+| This criterion is linked to a Learning OutcomeCreate the DoubleLinkedList
+
+DoubleLinkedList is created with all the required updates and methods.                        | 2 ptsFull Marks
+
+0 ptsNo Marks | 2 pts<br> |
+| This criterion is linked to a Learning OutcomeLinkedLists incorporated generics
+
+Make your linked lists utilize generics to support more data types                      | 2 ptsFull Marks
+
+0 ptsNo Marks | 2 pts<br> |
+| This criterion is linked to a Learning OutcomeUnit Tests for both Lists
+
+Create at least 2 tests for each method inside your LinkedList for each type (single & double). | 4 ptsFull Marks
+
+0 ptsNo Marks | 4 pts<br> |
