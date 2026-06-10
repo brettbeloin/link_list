@@ -1,5 +1,5 @@
 #pragma once
-// #include "cstdio"
+#include "print"
 #include <stdexcept>
 #include <string>
 
@@ -18,11 +18,6 @@ private:
 public:
   /*
    * Order of Completed function following CRUD:
-   * Create:
-   *    Add
-   * Read:
-   *    Get
-   *    toString
    * Delete:
    *    Remove
    *    Clear
@@ -52,10 +47,54 @@ public:
   int Search(T val) { return -1; }
   int Count() { return size; }
 
-  T Get(int index) {}
+  T Get(int index) {
+    try {
+      if (index < 0 || index >= size) {
+        throw std::out_of_range("Index out of bounds");
+      }
+
+      Node *curr_node = head;
+      for (int i = 0; i < index; i++) {
+        curr_node = curr_node->next;
+      }
+
+      return curr_node->data;
+    } catch (const std::out_of_range &e) {
+      std::println("[Error] The index must be between 0 and {}.", size - 1);
+
+      throw;
+      // return T();
+    }
+  }
+
   T Remove() {}
   T RemoveAt(int index) {}
   T RemoveLast() {}
 
-  std::string toString() { return ""; }
+  std::string toString() {
+    if (size == 0) {
+      return "";
+    }
+
+    std::string foo = "";
+    Node *node = head;
+
+    for (int i = 0; i <= size - 1; i++) {
+      if constexpr (std::is_same_v<T, std::string>) {
+        foo.append(node->data);
+      } else if constexpr (std::is_same_v<T, const char *>) {
+        foo.append(node->data);
+      } else {
+        foo.append(std::to_string(node->data));
+      }
+
+      if (i < size - 1) {
+        foo.append(", ");
+      }
+
+      node = node->next;
+    }
+
+    return foo;
+  }
 };
