@@ -1,5 +1,6 @@
 #pragma once
-#include "print"
+// #include "print"
+#include <sstream>
 #include <stdexcept>
 #include <string>
 
@@ -48,23 +49,16 @@ public:
   int Count() { return size; }
 
   T Get(int index) {
-    try {
-      if (index < 0 || index >= size) {
-        throw std::out_of_range("Index out of bounds");
-      }
-
-      Node *curr_node = head;
-      for (int i = 0; i < index; i++) {
-        curr_node = curr_node->next;
-      }
-
-      return curr_node->data;
-    } catch (const std::out_of_range &e) {
-      std::println("[Error] The index must be between 0 and {}.", size - 1);
-
-      throw;
-      // return T();
+    if (index < 0 || index >= size) {
+      throw std::out_of_range("Index out of bounds");
     }
+
+    Node *curr_node = head;
+    for (int i = 0; i < index; i++) {
+      curr_node = curr_node->next;
+    }
+
+    return curr_node->data;
   }
 
   T Remove() {}
@@ -76,25 +70,18 @@ public:
       return "";
     }
 
-    std::string foo = "";
+    std::ostringstream oss;
     Node *node = head;
 
     for (int i = 0; i <= size - 1; i++) {
-      if constexpr (std::is_same_v<T, std::string>) {
-        foo.append(node->data);
-      } else if constexpr (std::is_same_v<T, const char *>) {
-        foo.append(node->data);
-      } else {
-        foo.append(std::to_string(node->data));
-      }
-
+      oss << node->data;
       if (i < size - 1) {
-        foo.append(", ");
+        oss << ", ";
       }
 
       node = node->next;
     }
 
-    return foo;
+    return oss.str();
   }
 };
