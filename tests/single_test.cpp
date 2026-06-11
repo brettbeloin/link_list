@@ -1,4 +1,5 @@
 #include <../external/doctest/doctest/doctest.h>
+#include <print>
 #include <singleLinkedList.h>
 #include <stdexcept>
 
@@ -155,5 +156,50 @@ TEST_CASE("Testing the Search Method") {
     list.Add(7);
     list.Add(6);
     CHECK(list.Search(5) == -1);
+  }
+}
+
+TEST_CASE("Testing the Insert Method") {
+  singleLinkedList<int> list;
+
+  SUBCASE("Test Happy") {
+    list.Add(1);
+    list.Add(3);
+    list.Add(7);
+    list.Add(6);
+    list.Insert(5, 3);
+
+    CHECK(list.Count() == 5);
+    CHECK(list.Get(3) == 5);
+  }
+
+  SUBCASE("Test empty") {
+    list.Add(6);
+    list.Insert(5, 0);
+    CHECK(list.Count() == 2);
+    CHECK(list.Get(0) == 5);
+  }
+
+  SUBCASE("Test Tail logic") {
+    list.Add(1);
+    list.Add(3);
+    list.Add(7);
+    list.Add(6);
+    list.Insert(5, 3);
+    CHECK(list.Count() == 5);
+    CHECK(list.printTail() == "6");
+  }
+
+  SUBCASE("Test out_of_range") {
+    list.Add(1);
+    list.Add(3);
+    list.Add(7);
+    list.Add(6);
+    CHECK_THROWS_AS(list.Insert(5, -1), std::out_of_range);
+    CHECK_THROWS_AS(list.Insert(5, list.Count() + 1), std::out_of_range);
+    SUBCASE("test out_of_range on empty list") {
+      list.Clear();
+      CHECK_THROWS_AS(list.Insert(5, 0), std::out_of_range);
+    }
   }
 }

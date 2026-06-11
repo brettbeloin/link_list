@@ -18,7 +18,6 @@ private:
 
 public:
   /*
-   * Insert
    * RemoveAt
    */
   singleLinkedList() : head(nullptr), tail(nullptr), size(0) {}
@@ -48,7 +47,35 @@ public:
     size++;
   }
 
-  void Insert(T val, int index) {}
+  void Insert(T val, int index) {
+    if (index < 0 || index >= size) {
+      throw std::out_of_range("Index out of bounds");
+    }
+
+    Node *node = head;
+    Node *newNode = new Node(val);
+
+    if (index == 0) {
+      head = newNode;
+      newNode->next = node;
+      size++;
+      return;
+    }
+
+    for (int i = 0; i < index - 1; i++) {
+      node = node->next;
+    }
+
+    newNode->next = node->next;
+    node->next = newNode;
+
+    if (newNode->next == nullptr) {
+      tail = newNode;
+    }
+
+    size++;
+  }
+
   void Clear() {
     Node *node = head;
     Node *temp;
