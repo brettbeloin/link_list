@@ -7,7 +7,7 @@ int main() {
   std::println("Original Foo: {}. The size is: {}", foo.toString(),
                foo.Count());
   foo.printHead();
-  foo.printTail();
+  std::println("{}", foo.printTail());
 
   foo.Remove();
   std::println("modified Foo: {}. The size is: {}", foo.toString(),
@@ -27,23 +27,29 @@ int main() {
   list.Remove();
   std::println("modified List: {}. The size is: {}", list.toString(),
                list.Count());
+  std::println("{}", list.printTail());
 
-  list.printTail();
   singleLinkedList<std::string> newList;
   newList.Add("Hello");
   newList.Add("World");
   newList.Add("!");
   std::println("{}.", newList.toString());
+
   newList.Clear();
   newList.Add("this");
   newList.Add("is");
   newList.Add("a");
   newList.Add("new");
   newList.Add("list");
+  newList.printHead();
+  std::println("{}", newList.printTail());
   std::println("cleared list: {}.", newList.toString());
 
   singleLinkedList<int> bar;
+  std::println("we are in bar territory");
   bar.Clear();
+  bar.printHead();
+  std::println("{}", bar.printTail());
   std::println("bar: {}", bar.toString());
 
   return 0;

@@ -104,3 +104,37 @@ TEST_CASE("Testing the Clear method") {
     CHECK(list.Count() == 0);
   }
 }
+
+TEST_CASE("Testing the RemoveLast method") {
+  singleLinkedList<int> list;
+
+  SUBCASE("Test Happy") {
+    list.Add(1);
+    list.Add(3);
+    list.Add(7);
+    list.Add(6);
+    list.RemoveLast();
+
+    CHECK(list.toString() == "1, 3, 7");
+    CHECK(list.printTail() == "7");
+  }
+
+  SUBCASE("Test two elements") {
+    list.Add(1);
+    list.Add(3);
+    list.RemoveLast();
+
+    CHECK(list.printTail() == "1");
+  }
+
+  SUBCASE("Test a single element list") {
+    list.Add(5);
+    list.RemoveLast();
+
+    CHECK(list.Count() == 0);
+  }
+
+  SUBCASE("Test empty list") {
+    CHECK_THROWS_AS(list.RemoveLast(), std::out_of_range);
+  }
+}
