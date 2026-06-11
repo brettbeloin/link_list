@@ -83,3 +83,24 @@ TEST_CASE("Testing the Remove method") {
     CHECK(list.toString() == "");
   }
 }
+
+TEST_CASE("Testing the Clear method") {
+  singleLinkedList<int> list;
+
+  SUBCASE("Clear full list") {
+    list.Add(1);
+    list.Add(3);
+    list.Add(7);
+    list.Add(6);
+    list.Add(2);
+    list.Clear();
+
+    CHECK(list.Count() == 0);
+  }
+
+  SUBCASE("Clear empty list") {
+    list.Clear();
+
+    CHECK(list.Count() == 0);
+  }
+}

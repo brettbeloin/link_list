@@ -34,5 +34,17 @@ int main() {
   newList.Add("World");
   newList.Add("!");
   std::println("{}.", newList.toString());
+  newList.Clear();
+  newList.Add("this");
+  newList.Add("is");
+  newList.Add("a");
+  newList.Add("new");
+  newList.Add("list");
+  std::println("cleared list: {}.", newList.toString());
+
+  singleLinkedList<int> bar;
+  bar.Clear();
+  std::println("bar: {}", bar.toString());
+
   return 0;
 }

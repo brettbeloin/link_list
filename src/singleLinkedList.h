@@ -18,31 +18,12 @@ private:
 
 public:
   /*
-   * Order of Completed function following CRUD:
-   * Delete:
-   *    Remove
-   *    Clear
-   *
-   * important, follow simaler logic as functions above
-   * Insert
    * Search
    * RemoveLast
+   * Insert
    * RemoveAt
    */
-
   singleLinkedList() : head(nullptr), tail(nullptr), size(0) {}
-
-  void printHead() {
-    std::ostringstream oss;
-    oss << head->data;
-    std::println("The head is: {}", oss.str());
-  }
-
-  void printTail() {
-    std::ostringstream oss;
-    oss << tail->data;
-    std::println("The tail is: {}", oss.str());
-  }
 
   void Add(T val) {
     Node *newNode = new Node(val);
@@ -55,7 +36,20 @@ public:
     size++;
   }
   void Insert(T val, int index) {}
-  void Clear() {}
+  void Clear() {
+    Node *node = head;
+    Node *temp;
+
+    for (int i = 0; i <= size - 1; i++) {
+      temp = node->next;
+      delete node;
+      node = temp;
+    }
+
+    head = nullptr;
+    tail = nullptr;
+    size = 0;
+  }
 
   int Search(T val) { return -1; }
   int Count() { return size; }
@@ -116,5 +110,17 @@ public:
     }
 
     return oss.str();
+  }
+
+  void printHead() {
+    std::ostringstream oss;
+    oss << head->data;
+    std::println("The head is: {}", oss.str());
+  }
+
+  void printTail() {
+    std::ostringstream oss;
+    oss << tail->data;
+    std::println("The tail is: {}", oss.str());
   }
 };
