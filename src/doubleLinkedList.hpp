@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <string>
 
-template <typename T> class singleLinkedList {
+template <typename T> class doubleLinkList {
 private:
   struct Node {
     T data;
@@ -17,8 +17,8 @@ private:
   int size;
 
 public:
-  singleLinkedList() : head(nullptr), tail(nullptr), size(0) {}
-  ~singleLinkedList() {
+  doubleLinkList() : head(nullptr), tail(nullptr), size(0) {}
+  ~doubleLinkList() {
     Node *node = head;
     Node *temp;
 

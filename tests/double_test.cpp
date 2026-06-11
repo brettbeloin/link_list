@@ -4,7 +4,7 @@
 
 TEST_CASE("Testing The Add method") {
   SUBCASE("Testing a single element") {
-    singleLinkedList<int> list;
+    doubleLinkList<int> list;
 
     CHECK(list.Count() == 0);
     list.Add(75);
@@ -12,7 +12,7 @@ TEST_CASE("Testing The Add method") {
   }
 
   SUBCASE("Testing multiple elements with generics") {
-    singleLinkedList<std::string> list;
+    doubleLinkList<std::string> list;
 
     CHECK(list.Count() == 0);
     list.Add("Hello");
@@ -23,7 +23,7 @@ TEST_CASE("Testing The Add method") {
 }
 
 TEST_CASE("Testing The Get method") {
-  singleLinkedList<int> list;
+  doubleLinkList<int> list;
 
   list.Add(1);
   list.Add(3);
@@ -43,7 +43,7 @@ TEST_CASE("Testing The Get method") {
 }
 
 TEST_CASE("Testing the ToString method") {
-  singleLinkedList<int> list;
+  doubleLinkList<int> list;
 
   SUBCASE("Test empty list") { CHECK(list.ToString() == ""); }
 
@@ -59,7 +59,7 @@ TEST_CASE("Testing the ToString method") {
 }
 
 TEST_CASE("Testing the Remove method") {
-  singleLinkedList<int> list;
+  doubleLinkList<int> list;
 
   SUBCASE("Happy Path") {
     list.Add(1);
@@ -85,7 +85,7 @@ TEST_CASE("Testing the Remove method") {
 }
 
 TEST_CASE("Testing the Clear method") {
-  singleLinkedList<int> list;
+  doubleLinkList<int> list;
 
   SUBCASE("Clear full list") {
     list.Add(1);
@@ -106,7 +106,7 @@ TEST_CASE("Testing the Clear method") {
 }
 
 TEST_CASE("Testing the RemoveLast method") {
-  singleLinkedList<int> list;
+  doubleLinkList<int> list;
 
   SUBCASE("Test Happy") {
     list.Add(1);
@@ -132,7 +132,7 @@ TEST_CASE("Testing the RemoveLast method") {
 }
 
 TEST_CASE("Testing the Search Method") {
-  singleLinkedList<int> list;
+  doubleLinkList<int> list;
 
   SUBCASE("Test Happy path") {
     list.Add(1);
@@ -158,7 +158,7 @@ TEST_CASE("Testing the Search Method") {
 }
 
 TEST_CASE("Testing the Insert Method") {
-  singleLinkedList<int> list;
+  doubleLinkList<int> list;
 
   SUBCASE("Test Happy") {
     list.Add(1);
@@ -204,7 +204,7 @@ TEST_CASE("Testing the Insert Method") {
 }
 
 TEST_CASE("Testing RemoveAt method") {
-  singleLinkedList<int> list;
+  doubleLinkList<int> list;
 
   SUBCASE("Test Happy Path") {
     list.Add(1);
