@@ -1,5 +1,5 @@
 #pragma once
-// #include "print"
+#include "print"
 #include <sstream>
 #include <stdexcept>
 #include <string>
@@ -32,6 +32,18 @@ public:
 
   singleLinkedList() : head(nullptr), tail(nullptr), size(0) {}
 
+  void printHead() {
+    std::ostringstream oss;
+    oss << head->data;
+    std::println("The head is: {}", oss.str());
+  }
+
+  void printTail() {
+    std::ostringstream oss;
+    oss << tail->data;
+    std::println("The tail is: {}", oss.str());
+  }
+
   void Add(T val) {
     Node *newNode = new Node(val);
     if (!head) {
@@ -61,7 +73,27 @@ public:
     return curr_node->data;
   }
 
-  T Remove() {}
+  T Remove() {
+    if (size == 0) {
+      throw std::out_of_range("The List is empty");
+    }
+
+    Node *node = head;
+    T foo = node->data;
+    head = node->next;
+
+    if (size == 1) {
+      tail = head;
+    } else if (size == 0) {
+      tail = nullptr;
+    }
+
+    delete node;
+
+    size--;
+    return foo;
+  }
+
   T RemoveAt(int index) {}
   T RemoveLast() {}
 
@@ -75,6 +107,7 @@ public:
 
     for (int i = 0; i <= size - 1; i++) {
       oss << node->data;
+
       if (i < size - 1) {
         oss << ", ";
       }

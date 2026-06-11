@@ -2,6 +2,17 @@
 #include <print>
 
 int main() {
+  singleLinkedList<int> foo;
+  foo.Add(10);
+  std::println("Original Foo: {}. The size is: {}", foo.toString(),
+               foo.Count());
+  foo.printHead();
+  foo.printTail();
+
+  foo.Remove();
+  std::println("modified Foo: {}. The size is: {}", foo.toString(),
+               foo.Count());
+
   singleLinkedList<int> list;
 
   list.Add(1);
@@ -10,9 +21,14 @@ int main() {
   list.Add(6);
   list.Add(2);
 
-  std::println("{}.", list.toString());
+  std::println("Original List: {}. The size is: {}", list.toString(),
+               list.Count());
   std::println("the 3'rd element is: {}", list.Get(3));
+  list.Remove();
+  std::println("modified List: {}. The size is: {}", list.toString(),
+               list.Count());
 
+  list.printTail();
   singleLinkedList<std::string> newList;
   newList.Add("Hello");
   newList.Add("World");

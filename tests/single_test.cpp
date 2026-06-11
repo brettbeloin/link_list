@@ -57,3 +57,29 @@ TEST_CASE("Testing the toString method") {
     CHECK(list.toString() == "1, 3, 7, 6, 2");
   }
 }
+
+TEST_CASE("Testing the Remove method") {
+  singleLinkedList<int> list;
+  SUBCASE("Happy Path") {
+    list.Add(1);
+    list.Add(3);
+    list.Add(7);
+    list.Add(6);
+    list.Add(2);
+
+    list.Remove();
+
+    CHECK(list.toString() == "3, 7, 6, 2");
+  }
+
+  SUBCASE("Test Empty list") {
+    CHECK_THROWS_AS(list.Remove(), std::out_of_range);
+  }
+
+  SUBCASE("Test tail edge case") {
+    list.Add(3);
+    list.Remove();
+
+    CHECK(list.toString() == "");
+  }
+}
