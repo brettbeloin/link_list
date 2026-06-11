@@ -1,7 +1,9 @@
 #include "singleLinkedList.h"
 #include <print>
 
-int main() {
+void SingleLinkedList() {
+  std::println("These are all of the single Link list functions");
+
   singleLinkedList<int> foo;
   foo.Add(10);
   std::println("Original Foo: {}. The size is: {}", foo.ToString(),
@@ -44,6 +46,15 @@ int main() {
   std::println("we are in bar territory");
   bar.Clear();
   std::println("bar: {}", bar.ToString());
+}
+
+void DoubleLinkList() {
+  std::println("These are all of the single Link list functions");
+}
+
+int main() {
+  SingleLinkedList();
+  DoubleLinkList();
 
   return 0;
 }
