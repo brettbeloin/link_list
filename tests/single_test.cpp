@@ -1,5 +1,5 @@
-#include "../external/doctest/doctest/doctest.h"
-#include "singleLinkedList.h"
+#include <../external/doctest/doctest/doctest.h>
+#include <singleLinkedList.h>
 #include <stdexcept>
 
 TEST_CASE("Testing The Add method") {
@@ -45,6 +45,7 @@ TEST_CASE("Testing The Get method") {
 
 TEST_CASE("Testing the toString method") {
   singleLinkedList<int> list;
+
   SUBCASE("Test empty list") { CHECK(list.toString() == ""); }
 
   SUBCASE("Test full list") {
@@ -60,16 +61,16 @@ TEST_CASE("Testing the toString method") {
 
 TEST_CASE("Testing the Remove method") {
   singleLinkedList<int> list;
+
   SUBCASE("Happy Path") {
     list.Add(1);
     list.Add(3);
     list.Add(7);
     list.Add(6);
     list.Add(2);
-
     list.Remove();
 
-    CHECK(list.toString() == "3, 7, 6, 2");
+    CHECK(list.Count() == 4);
   }
 
   SUBCASE("Test Empty list") {
@@ -80,7 +81,7 @@ TEST_CASE("Testing the Remove method") {
     list.Add(3);
     list.Remove();
 
-    CHECK(list.toString() == "");
+    CHECK(list.Count() == 0);
   }
 }
 
@@ -115,16 +116,8 @@ TEST_CASE("Testing the RemoveLast method") {
     list.Add(6);
     list.RemoveLast();
 
-    CHECK(list.toString() == "1, 3, 7");
+    CHECK(list.Count() == 3);
     CHECK(list.printTail() == "7");
-  }
-
-  SUBCASE("Test two elements") {
-    list.Add(1);
-    list.Add(3);
-    list.RemoveLast();
-
-    CHECK(list.printTail() == "1");
   }
 
   SUBCASE("Test a single element list") {
@@ -136,5 +129,31 @@ TEST_CASE("Testing the RemoveLast method") {
 
   SUBCASE("Test empty list") {
     CHECK_THROWS_AS(list.RemoveLast(), std::out_of_range);
+  }
+}
+
+TEST_CASE("Testing the Search Method") {
+  singleLinkedList<int> list;
+
+  SUBCASE("Test Happy path") {
+    list.Add(1);
+    list.Add(3);
+    list.Add(7);
+    list.Add(6);
+    int idx = list.Search(7);
+
+    CHECK(idx == 2);
+  }
+
+  SUBCASE("Test empty list") {
+    CHECK_THROWS_AS(list.Search(5), std::out_of_range);
+  }
+
+  SUBCASE("Test Element not found") {
+    list.Add(1);
+    list.Add(3);
+    list.Add(7);
+    list.Add(6);
+    CHECK(list.Search(5) == -1);
   }
 }

@@ -18,7 +18,6 @@ private:
 
 public:
   /*
-   * Search
    * Insert
    * RemoveAt
    */
@@ -65,7 +64,22 @@ public:
     size = 0;
   }
 
-  int Search(T val) { return -1; }
+  int Search(T val) {
+    if (size == 0) {
+      throw std::out_of_range("The List is empty");
+    }
+
+    Node *node = head;
+
+    for (int i = 0; i <= size - 1; i++) {
+      if (node->data == val) {
+        return i;
+      }
+      node = node->next;
+    }
+
+    return -1;
+  }
   int Count() { return size; }
 
   T Get(int index) {
