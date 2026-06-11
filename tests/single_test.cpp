@@ -195,11 +195,40 @@ TEST_CASE("Testing the Insert Method") {
     list.Add(3);
     list.Add(7);
     list.Add(6);
+
     CHECK_THROWS_AS(list.Insert(5, -1), std::out_of_range);
     CHECK_THROWS_AS(list.Insert(5, list.Count() + 1), std::out_of_range);
     SUBCASE("test out_of_range on empty list") {
       list.Clear();
       CHECK_THROWS_AS(list.Insert(5, 0), std::out_of_range);
+    }
+  }
+}
+
+TEST_CASE("Testing RemoveAt method") {
+  singleLinkedList<int> list;
+
+  SUBCASE("Test Happy Path") {
+    list.Add(1);
+    list.Add(3);
+    list.Add(7);
+    list.Add(6);
+    int removed_number = list.RemoveAt(2);
+
+    CHECK(list.Count() == 3);
+    CHECK(removed_number == 6);
+  }
+  SUBCASE("Test out_of_range") {
+    list.Add(1);
+    list.Add(3);
+    list.Add(7);
+    list.Add(6);
+
+    CHECK_THROWS_AS(list.RemoveAt(-1), std::out_of_range);
+    CHECK_THROWS_AS(list.RemoveAt(list.Count() + 1), std::out_of_range);
+    SUBCASE("test out_of_range on empty list") {
+      list.Clear();
+      CHECK_THROWS_AS(list.RemoveAt(0), std::out_of_range);
     }
   }
 }

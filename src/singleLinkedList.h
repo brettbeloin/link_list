@@ -141,7 +141,42 @@ public:
     return foo;
   }
 
-  T RemoveAt(int index) {}
+  T RemoveAt(int index) {
+    if (index < 0 || index >= size) {
+      throw std::out_of_range("Index out of bounds");
+    }
+
+    Node *node = head;
+    Node *temp;
+
+    if (index == 0) {
+      T foo = node->data;
+      head = node->next;
+      delete node;
+      size--;
+      return foo;
+    }
+
+    for (int i = 0; i < index - 1; i++) {
+      node = node->next;
+    }
+
+    if (index == size - 1) {
+      T bar = node->next->data;
+      delete node->next;
+      tail = node;
+      size--;
+      return bar;
+    }
+
+    temp = node->next->next;
+    delete node->next;
+    node->next = temp;
+    size--;
+
+    return temp->data;
+  }
+
   T RemoveLast() {
     if (size == 0) {
       throw std::out_of_range("The List is empty");
