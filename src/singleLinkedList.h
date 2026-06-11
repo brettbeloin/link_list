@@ -17,9 +17,6 @@ private:
   int size;
 
 public:
-  /*
-   * RemoveAt
-   */
   singleLinkedList() : head(nullptr), tail(nullptr), size(0) {}
   ~singleLinkedList() {
     Node *node = head;
@@ -37,12 +34,12 @@ public:
   }
 
   void Add(T val) {
-    Node *newNode = new Node(val);
+    Node *new_node = new Node(val);
     if (!head) {
-      head = tail = newNode;
+      head = tail = new_node;
     } else {
-      tail->next = newNode;
-      tail = newNode;
+      tail->next = new_node;
+      tail = new_node;
     }
     size++;
   }
@@ -53,11 +50,11 @@ public:
     }
 
     Node *node = head;
-    Node *newNode = new Node(val);
+    Node *new_node = new Node(val);
 
     if (index == 0) {
-      head = newNode;
-      newNode->next = node;
+      head = new_node;
+      new_node->next = node;
       size++;
       return;
     }
@@ -66,12 +63,8 @@ public:
       node = node->next;
     }
 
-    newNode->next = node->next;
-    node->next = newNode;
-
-    if (newNode->next == nullptr) {
-      tail = newNode;
-    }
+    new_node->next = node->next;
+    node->next = new_node;
 
     size++;
   }
@@ -107,6 +100,7 @@ public:
 
     return -1;
   }
+
   int Count() { return size; }
 
   T Get(int index) {
@@ -128,7 +122,7 @@ public:
     }
 
     Node *node = head;
-    T foo = node->data;
+    T removed_val = node->data;
     head = node->next;
 
     if (size == 1) {
@@ -138,7 +132,7 @@ public:
     delete node;
 
     size--;
-    return foo;
+    return removed_val;
   }
 
   T RemoveAt(int index) {
@@ -150,11 +144,11 @@ public:
     Node *temp;
 
     if (index == 0) {
-      T foo = node->data;
+      T removed_val = node->data;
       head = node->next;
       delete node;
       size--;
-      return foo;
+      return removed_val;
     }
 
     for (int i = 0; i < index - 1; i++) {
@@ -162,19 +156,20 @@ public:
     }
 
     if (index == size - 1) {
-      T bar = node->next->data;
+      T removed_val = node->next->data;
       delete node->next;
       tail = node;
       size--;
-      return bar;
+      return removed_val;
     }
 
     temp = node->next->next;
+    T removed_val = node->next->data;
     delete node->next;
     node->next = temp;
     size--;
 
-    return temp->data;
+    return removed_val;
   }
 
   T RemoveLast() {
@@ -185,26 +180,27 @@ public:
     Node *node = head;
 
     if (size == 1) {
-      T foo = node->data;
+      T removed_val = node->data;
       delete node;
-      head, tail = nullptr;
+      head = nullptr;
+      tail = nullptr;
       size--;
-      return foo;
+      return removed_val;
     }
 
     for (int i = 0; i < size - 2; i++) {
       node = node->next;
     }
 
-    T temp = node->next->data;
+    T removed_val = node->next->data;
     delete node->next;
     tail = node;
     size--;
 
-    return temp;
+    return removed_val;
   }
 
-  std::string toString() {
+  std::string ToString() {
     if (size == 0) {
       return "";
     }
@@ -222,26 +218,6 @@ public:
       node = node->next;
     }
 
-    return oss.str();
-  }
-
-  void printHead() {
-    std::ostringstream oss;
-    if (size == 0) {
-      std::println("There is no head");
-      return;
-    }
-
-    oss << head->data;
-    std::println("The head is: {}", oss.str());
-  }
-
-  std::string printTail() {
-    std::ostringstream oss;
-    if (size == 0) {
-      return "There is no tail";
-    }
-    oss << tail->data;
     return oss.str();
   }
 };

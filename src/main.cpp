@@ -4,13 +4,11 @@
 int main() {
   singleLinkedList<int> foo;
   foo.Add(10);
-  std::println("Original Foo: {}. The size is: {}", foo.toString(),
+  std::println("Original Foo: {}. The size is: {}", foo.ToString(),
                foo.Count());
-  foo.printHead();
-  std::println("{}", foo.printTail());
 
   foo.Remove();
-  std::println("modified Foo: {}. The size is: {}", foo.toString(),
+  std::println("modified Foo: {}. The size is: {}", foo.ToString(),
                foo.Count());
 
   singleLinkedList<int> list;
@@ -21,36 +19,31 @@ int main() {
   list.Add(6);
   list.Add(2);
 
-  std::println("Original List: {}. The size is: {}", list.toString(),
+  std::println("Original List: {}. The size is: {}", list.ToString(),
                list.Count());
   std::println("the 3'rd element is: {}", list.Get(3));
   list.Remove();
-  std::println("modified List: {}. The size is: {}", list.toString(),
+  std::println("modified List: {}. The size is: {}", list.ToString(),
                list.Count());
-  std::println("{}", list.printTail());
 
-  singleLinkedList<std::string> newList;
-  newList.Add("Hello");
-  newList.Add("World");
-  newList.Add("!");
-  std::println("{}.", newList.toString());
+  singleLinkedList<std::string> new_list;
+  new_list.Add("Hello");
+  new_list.Add("World");
+  new_list.Add("!");
+  std::println("{}.", new_list.ToString());
 
-  newList.Clear();
-  newList.Add("this");
-  newList.Add("is");
-  newList.Add("a");
-  newList.Add("new");
-  newList.Add("list");
-  newList.printHead();
-  std::println("{}", newList.printTail());
-  std::println("cleared list: {}.", newList.toString());
+  new_list.Clear();
+  new_list.Add("this");
+  new_list.Add("is");
+  new_list.Add("a");
+  new_list.Add("new");
+  new_list.Add("list");
+  std::println("cleared list: {}.", new_list.ToString());
 
   singleLinkedList<int> bar;
   std::println("we are in bar territory");
   bar.Clear();
-  bar.printHead();
-  std::println("{}", bar.printTail());
-  std::println("bar: {}", bar.toString());
+  std::println("bar: {}", bar.ToString());
 
   return 0;
 }

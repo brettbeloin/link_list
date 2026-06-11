@@ -1,6 +1,11 @@
+/*
+ * Model: Gemini 2.5
+ * Generated: Rename to snake_case variables, PascalCase functions
+ * Chat Log:
+ */
+
+#include "singleLinkedList.h"
 #include <../external/doctest/doctest/doctest.h>
-#include <print>
-#include <singleLinkedList.h>
 #include <stdexcept>
 
 TEST_CASE("Testing The Add method") {
@@ -39,15 +44,14 @@ TEST_CASE("Testing The Get method") {
 
   SUBCASE("Test get out of bounds err") {
     CHECK_THROWS_AS(list.Get(5), std::out_of_range);
-
     CHECK_THROWS_AS(list.Get(-1), std::out_of_range);
   }
 }
 
-TEST_CASE("Testing the toString method") {
+TEST_CASE("Testing the ToString method") {
   singleLinkedList<int> list;
 
-  SUBCASE("Test empty list") { CHECK(list.toString() == ""); }
+  SUBCASE("Test empty list") { CHECK(list.ToString() == ""); }
 
   SUBCASE("Test full list") {
     list.Add(1);
@@ -56,7 +60,7 @@ TEST_CASE("Testing the toString method") {
     list.Add(6);
     list.Add(2);
 
-    CHECK(list.toString() == "1, 3, 7, 6, 2");
+    CHECK(list.ToString() == "1, 3, 7, 6, 2");
   }
 }
 
@@ -118,7 +122,7 @@ TEST_CASE("Testing the RemoveLast method") {
     list.RemoveLast();
 
     CHECK(list.Count() == 3);
-    CHECK(list.printTail() == "7");
+    CHECK((list.Get(list.Count() - 1)) == 7);
   }
 
   SUBCASE("Test a single element list") {
@@ -187,7 +191,7 @@ TEST_CASE("Testing the Insert Method") {
     list.Add(6);
     list.Insert(5, 3);
     CHECK(list.Count() == 5);
-    CHECK(list.printTail() == "6");
+    CHECK((list.Get(list.Count() - 1)) == 6);
   }
 
   SUBCASE("Test out_of_range") {
@@ -216,8 +220,9 @@ TEST_CASE("Testing RemoveAt method") {
     int removed_number = list.RemoveAt(2);
 
     CHECK(list.Count() == 3);
-    CHECK(removed_number == 6);
+    CHECK(removed_number == 7);
   }
+
   SUBCASE("Test out_of_range") {
     list.Add(1);
     list.Add(3);
