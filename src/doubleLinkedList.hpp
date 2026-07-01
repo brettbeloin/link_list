@@ -9,7 +9,8 @@ private:
   struct Node {
     T data;
     Node *next;
-    Node(T value) : data(value), next(nullptr) {}
+    Node *prev;
+    explicit Node(T value) : data(value), next(nullptr), prev(nullptr) {}
   };
 
   Node *head;
@@ -39,12 +40,14 @@ public:
       head = tail = new_node;
     } else {
       tail->next = new_node;
+      new_node->prev = tail;
       tail = new_node;
     }
+
     size++;
   }
 
-  void Insert(T val, int index) {
+  void Insert(T val, const int index) {
     if (index < 0 || index >= size) {
       throw std::out_of_range("Index out of bounds");
     }
@@ -55,15 +58,17 @@ public:
     if (index == 0) {
       head = new_node;
       new_node->next = node;
+      node->prev = new_node;
       size++;
       return;
     }
 
-    for (int i = 0; i < index - 1; i++) {
+    for (int i = 0; i < index; i++) {
       node = node->next;
     }
 
     new_node->next = node->next;
+    node->prev = new_node;
     node->next = new_node;
 
     size++;
@@ -71,10 +76,9 @@ public:
 
   void Clear() {
     Node *node = head;
-    Node *temp;
 
     for (int i = 0; i <= size - 1; i++) {
-      temp = node->next;
+      Node *temp = node->next;
       delete node;
       node = temp;
     }
@@ -103,7 +107,7 @@ public:
 
   int Count() { return size; }
 
-  T Get(int index) {
+  T Get(const int index) {
     if (index < 0 || index >= size) {
       throw std::out_of_range("Index out of bounds");
     }
@@ -124,6 +128,7 @@ public:
     Node *node = head;
     T removed_val = node->data;
     head = node->next;
+    // head->prev = nullptr;
 
     if (size == 1) {
       tail = head;
@@ -135,36 +140,35 @@ public:
     return removed_val;
   }
 
-  T RemoveAt(int index) {
+  T RemoveAt(const int index) {
     if (index < 0 || index >= size) {
       throw std::out_of_range("Index out of bounds");
     }
 
     Node *node = head;
-    Node *temp;
 
     if (index == 0) {
       T removed_val = node->data;
       head = node->next;
+      head->prev = nullptr;
       delete node;
       size--;
       return removed_val;
     }
 
-    for (int i = 0; i < index - 1; i++) {
+    for (int i = 0; i < index; i++) {
       node = node->next;
     }
 
     if (index == size - 1) {
-      T removed_val = node->next->data;
-      delete node->next;
-      tail = node;
+      T removed_val = node->data;
+      tail = node->prev;
       size--;
       return removed_val;
     }
 
-    temp = node->next->next;
-    T removed_val = node->next->data;
+    Node *temp = node->next;
+    T removed_val = node->data;
     delete node->next;
     node->next = temp;
     size--;
@@ -177,24 +181,16 @@ public:
       throw std::out_of_range("The List is empty");
     }
 
-    Node *node = head;
+    Node *node = tail;
+
+    T removed_val = node->data;
+    tail = node->prev;
 
     if (size == 1) {
-      T removed_val = node->data;
-      delete node;
-      head = nullptr;
-      tail = nullptr;
-      size--;
-      return removed_val;
+      tail = head;
     }
 
-    for (int i = 0; i < size - 2; i++) {
-      node = node->next;
-    }
-
-    T removed_val = node->next->data;
-    delete node->next;
-    tail = node;
+    delete node;
     size--;
 
     return removed_val;

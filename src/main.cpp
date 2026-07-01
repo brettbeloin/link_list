@@ -1,3 +1,4 @@
+#include "doubleLinkedList.hpp"
 #include "singleLinkedList.h"
 #include <print>
 
@@ -50,6 +51,9 @@ void SingleLinkedList() {
 
 void DoubleLinkList() {
   std::println("These are all of the single Link list functions");
+  doubleLinkList<int> list;
+  list.Add(5);
+  std::println("This list has: {}", list.ToString());
 }
 
 int main() {
