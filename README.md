@@ -1,8 +1,8 @@
-### Requirements
+# Requirements
 Your goal is to build two linked list data structures that meet the following requirements:
 ![Singly Linked List](assests/images/LinkedList_Pic.webp)
 
-### Step 1:
+## Step 1:
 - Add a class: SingleLinkedList
 - Your SingleLinkedList will be composed of nodes. 
 - Classes should be generic, capable of storing any kind of data within its nodes. See [Info] Generics In Code for help on generics.
@@ -24,12 +24,12 @@ Your goal is to build two linked list data structures that meet the following re
 - Any function that adds or removes values from the list MUST impact Count accordingly.
 - Write at least 2 tests against each of your algorithm/methods to validate its proper and correct function.
 
-### Step 2:
+## Step 2:
 - Now that your SingleLinkedList is completed, create a DoubleLinkedList 
     - Make sure to make a copy of your SingleLinkedList (renaming it) before getting started.
 ![Double Linked List](assests/images/DoubleLinkedList_pic.webp)
 
-### Rubric:
+## Rubric:
 
 | Criteria                                                                                                                                                                 | Ratings                        | Pts       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------: | :---------: |
